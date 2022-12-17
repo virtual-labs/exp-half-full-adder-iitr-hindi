@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="" name="description">
+<meta content="" name="author">
+
+<meta name="experiment-short-name" content="half-full-adder">
+<meta name="developer-institute" content="IITR">
+<meta name="learning-unit" content="CONSTRUCTION OF HALF/ FULL ADDER USING XOR AND NAND GATES AND VERIFICATION OF
+ITS OPERATION">
+<meta name="task-name" content="Theory">
+
+<!-- For iPhone -->
+<meta name="msapplication-TileColor" content="#4076e0">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#4076e0">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#4076e0">
+<title>वर्चुअल लैब्स</title>
+<link rel="shortcut icon" href="./assets/images/favicon.ico">
+<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=Raleway&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./assets/css/github-markdown.min.css">
+<link rel="stylesheet" href="./assets/css/vlabs-style.css">
+
+<script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+<style>
+h1 {
+font-size: 1.8rem;
+}
+h2 {
+font-size: 1.4rem;
+}
+h3 {
+font-size: 1.2rem;
+}
+
+h2, h3 {
+font-weight: 800;
+}
+</style>
+</head>
+<body class="p-0 container-fluid vlabs-page d-flex flex-column justify-content-between">
+
+<header class="vlabs-header sticky-top bg-white">
+<nav class="p-0 navbar navbar-light d-flex align-items-stretch">
+
+<button class="navbar-toggler px-4" type="button" onclick="toggle()">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="d-flex justify-content-center">
+<a href="https://vlab.co.in" class="navbar-brand">
+<img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+</a>
+</div>
+
+<div id="headerNavbar" class="d-none border-top flex-grow-1 d-lg-flex align-items-center">
+<ul class="navbar-nav ml-auto text-center d-flex flex-md-row">
+<li class="nav-item px-2 m-1">
+<a href="https://vlab.co.in">होम</a>
+</li>
+<li class="nav-item px-2 m-1">
+<a href="https://vlab.co.in/participating-institutes">भागीदार</a>
+</li>
+<li class="nav-item px-2 m-1">
+<a href="https://vlab.co.in/contact-us">संपर्क</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="container-fluid flex-fill d-flex flex-column vlabs-page-main">
+<div class="row d-flex justify-content-between">
+<div class="flex-column">
+
+<div class="row py-4 px-4 breadcrumbs">
+<a href="http://www.vlab.co.in/broad-area-electronics-and-communications">
+इलेक्ट्रॉनिक्स और संचार इंजीनियरिंग
+</a>
+<span class="mx-2">
+<i aria-hidden="true" class="fa fa-angle-right"></i>
+</span>
+<a href="https://de-iitr.vlabs.ac.in">
+डिजिटल इलेक्ट्रॉनिक्स 1
+</a>
+<span class="mx-2">
+<i aria-hidden="true" class="fa fa-angle-right"></i>
+</span>
+<a href="https://de-iitr.vlabs.ac.in/List of experiments.html">
+प्रयोग
+</a>
+</div>
+
+</div>
+<div class="flex-column">
+<div id="plugin-bug-report"></div>
+<div id="plugin-rating"></div>
+</div>
+</div>
+<div class="row flex-grow-1 d-flex flex-nowrap flex-column flex-lg-row">
+<div class="modal fade popupmenu" id="popupMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">
+<a href="https://vlab.co.in" class="navbar-brand">
+<img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+</a>
+</h5>
+<button type="button" class="btn-close align-self-center" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body nav-menu">
+<div>
+<div class="d-flex nav-menu-body">
+<a href="index.html" class="p-2 ">
+उद्देश्य
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="theory.html" class="p-2  current-item ">
+सिद्धांत
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="pretest.html" class="p-2 ">
+प्रीटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="procedure.html" class="p-2 ">
+कार्यप्रणाली
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="simulation.html" class="p-2 ">
+सिमुलेशन
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="posttest.html" class="p-2 ">
+पोस्टटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="references.html" class="p-2 ">
+सन्दर्भ
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="feedback.html" class="p-2 ">
+प्रतिपुष्टि
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="nav flex-column sidebar nav-menu flex-shrink-0 px-lg-4 align-items-center align-items-lg-start hidden d-none d-lg-flex" id="menu">
+<div>
+<div class="d-flex nav-menu-body">
+<a href="index.html" class="p-2 ">
+उद्देश्य
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="theory.html" class="p-2  current-item ">
+सिद्धांत
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="pretest.html" class="p-2 ">
+प्रीटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="procedure.html" class="p-2 ">
+कार्यप्रणाली
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="simulation.html" class="p-2 ">
+सिमुलेशन
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="posttest.html" class="p-2 ">
+पोस्टटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="references.html" class="p-2 ">
+सन्दर्भ
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="feedback.html" class="p-2 ">
+प्रतिपुष्टि
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+</div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+<div class="text-center fix-spacing">
+<h2 id="construction-of-half-full-adder-using-xor-and-nand-gates-and-verification-of-its-operation">XOR  और NAND गेट्स का उपयोग करके हाफ/फुल एडर का निर्माण और इसके संचालन का सत्यापन</h2>
+
+</div>
+<h3 id="introduction">परिचय</h3>
+<p>एडर्स, डिजिटल सर्किट्स हैं जो संख्याओं को जोड़ते हैं।  एडर्स अरिथमैटिक लॉजिक युनिट  का एक प्रमुख घटक हैं।  अधिकांश संख्यात्मक निरूपण जैसे बाइनरी कोडिड डेसिमल (BCD), एक्सेस-3, ग्रे कोड, बाइनरी आदि के लिए एडर्स का निर्माण किया जा सकता है।  इनमें से, अधिकांशतः सामान्य एडर्स  द्वारा सबसे अधिक बार किया जाने वाला कार्य बाइनरी एडिशन है।  इसके अलावा, कुछ डिजिटल अनुप्रयोगों जैसे टेबल इंडेक्स कैलकुलेशन, एड्रेस डिकोडिंग आदि में भी एडर्स का उपयोग किया जाता है।
+<br><br>
+बाइनरी एडिशन, डेसीमल एडिशन के समान है।  कुछ बुनियादी बाइनरी एडिशन नीचे दिखाए गए हैं।<br></p>
+<center><img src="images/1.1.png">
+<br><b>फिगर 1. हाफ एडर का योजनाबद्ध प्रतिनिधित्व</b></center><br>
+
+### 1) हाफ एडर
+<br>
+
+हाफ एडर एक कॉम्बिनेशन सर्किट है, जो दो बाइनरी नंबर्स का सरल जोड़ करता है।  यदि हम A और B को दो बिट्स के रूप में मानते हैं, जिनका जोड़ किया जाना है, तो ब्लॉक डायग्राम और A, B के साथ हाफ एडर के लिए एक ट्रुथ टेबल में इनपुट और योग, कैरी को आउटपुट के रूप में निम्नलिखित तालिका में दिखाया जा सकता है।         <br>
+<center><img src="images/3.3.png">&nbsp;&nbsp;<img src="images/2.2.png"></center>
+<br>
+<center><br><b>फिगर  2.  हाफ एडर का ब्लॉक आरेख और ट्रुथ टेबल</b></center>   <br>
+ऊपर किए गए बाइनरी एडिशन का योग आउटपुट एक EX-OR ऑपरेशन के समान है, जबकि कैरी आउटपुट AND ऑपरेशन के समान है।  उसी को कारनू मैप की मदद से सत्यापित किया जा सकता है। <br>
+योग आउटपुट के लिए ट्रुथ टेबल और K मैप सिम्पलीफिकेशन एवं लॉजिक डायग्राम नीचे दिखाये गये हैं।<br>
+
+<center><img src="images/4.4.png">&nbsp;
+<img src="images/5.5.png">&nbsp;
+<img src="images/6.6.png"><br><br></center>
+<center><br><b>फिगर 3. हाफ एडर के योग आउटपुट के लिए ट्रुथ टेबल और K मैप सिम्पलीफिकेशन एवं लॉजिक डायग्राम</b></center>     <br>
+<center><b>Sum = A B' + A' B</b></center><br>
+
+कैरी के लिए ट्रुथ टेबल और K मैप सिम्पलीफिकेशन एवं लॉजिक डायग्राम नीचे दिखाये गये हैं।<br>
+
+<center><img src="images/7.7.png">&nbsp;
+<img src="images/8.8.png">&nbsp;
+<img src="images/9.9.png"><br>
+<br>
+<center><br><b>फिगर  4. हाफ एडर के योग आउटपुट के लिए ट्रुथ टेबल और K मैप सिम्पलीफिकेशन एवं लॉजिक डायग्राम</b></center>   <br>
+<b>कैरी =  AB</b><br></center>
+
+यदि A  और B हाफ एडर के लिए बाइनरी इनपुट हैं, तो योग S की गणना करने के लिए  A एवं B का Ex – OR तथा कैरी C की गणना करने के लिए लॉजिक फंक्शन है-A एवं B का AND। इन दोनों को मिलाकर, फिगरसर्किट को लागू करने के लिए हाफ एडर का कॉम्बीनेशनल सर्किट नीचे दिखाया गया है।<br>
+
+<center> <img src="images/10.10.png"><br><br><br><b>फिगर 5. हाफ एडर लॉजिक डायग्राम</b></center><br>
+<br>
+
+जैसा कि हम जानते हैं कि NAND और NOR को  यूनिवर्सल गेट्स कहा जाता है, क्योंकि इन दोनों का उपयोग करके किसी भी लॉजिक सिस्टम को लागू किया जा सकता है, उनका उपयोग करके हाफ एडर सर्किट को भी लागू किया जा सकता है।  हम जानते हैं कि हाफ एडर  सर्किट में एक Ex – OR गेट और एक AND गेट होता है।<br>
+
+# 1.1) NAND गेट्स का उपयोग करते हुए हाफ एडर <br>
+
+<p>हाफ एडर को डिजाइन करने के लिए पांच NAND गेट्स की आवश्यकता होती है।  NAND गेट्स का उपयोग करते हुए हाफ एडर का निर्माण करने के लिए सर्किट नीचे दिखाया गया है।<br></p>
+<center><img src="images/11.11.png"><br><b>फिगर 6. NAND गेट्स का उपयोग करते हुए हाफ एडर का निर्माण</b></center><br>
+
+### 1.2) NOR गेट्स का उपयोग करते हुए हाफ एडर का निर्माण
+<br>
+
+हाफ एडर को डिजाइन करने के लिए पांच NOR गेट्स की आवश्यकता होती है। NOR गेट्स का उपयोग करते हुए हाफ एडर का निर्माण करने के लिए सर्किट नीचे दिखाया गया है।<br>
+<center><img src="images/12.12.png"><br><b>फिगर 7.  NOR गेट्स का उपयोग करते हुए हाफ एडर का निर्माण</b></center><br>
+
+
+<h3 id="2full-adder">2) फुल एडर</h3>
+<br>
+
+फुल एडर  एक डिजिटल सर्किट है जिसका उपयोग तीन बाइनरी बिट्स के योग की गणना करने के लिए किया जाता है।  हाफ एडर  की तुलना में फुल एडर जटिल होता है और इसे लागू करना मुश्किल होता है।  तीन बिट्स में से दो पहले के समान हैं, जो A, ऑगेंड बिट और B, एडेंड बिट हैं।  अतिरिक्त तीसरा बिट पिछले चरण का कैरी बिट है, और आमतौर पर CIN द्वारा इसका प्रतिनिधित्व किया जाता है।  यह कैरी के साथ तीन बिट्स के योग की गणना करता है।  आउटपुट कैरी को कैरी-आउट कहा जाता है और कैरी आउट द्वारा प्रतिनिधित्व किया जाता है।<br>
+
+इनपुट A, B और CIN के साथ एक फुल एडर  का ब्लॉक डायग्राम, और आउटपुट के रूप में  S कैरी आउट नीचे दिखाया गया है।<br>
+<center><img src="images/14.14.png">&nbsp;&nbsp;
+<img src="images/15.15.png"><br>
+<b>फिगर 8. फुल एडर  ब्लॉक डायग्राम और ट्रुथ टेबल</b></center><br><br><br>
+<center><img src="images/18.18.png"><br><br>
+
+<b>फिगर 9. फुल एडर  लॉजिक डायग्राम</b></center><br><br>
+
+ट्रुथ टेबल के आधार पर, बूलियन फंक्शन्स Sum (S) और कैरी-आउट (COUT), K –मैप का उपयोग करके प्राप्त किए जा सकते हैं।<p></p><br>
+<center> <img src="images/16.16.png" style="height: 230px; width: 360px;"><br></center>
+<center><b>फिगर 10. योग के लिये K-Map सरलीकृत समीकरण  है S = A'B'Cin + A'BCin' + ABCin</b></center><br><br>
+<center><img src="images/17.17.png" style="height: 230px; width: 360px;"><br></center>
+<center><b>फिगर 11. COUT के लिये  K-मैप सरलीकृत समीकरण है COUT = AB + ACIN + BCIN</b><br></center><br><br>
+
+फुल एडर  के लिए एक कॉम्बीनेशनल सर्किट को लागू करने के लिए, ऊपर दिए गए समीकरणों से स्पष्ट है कि हमें योग के लिए चार, 3-इनपुट  AND गेट्स एवं एक 4-इनपुट OR गेट्स तथा कैरी-आउट के लिए तीन 2-इनपुट OR गेट्स तथा एक 3-इनपुट OR गेट्स की आवश्यकता है।<p></p><br><br>
+
+### 2.1) NAND गेट्स का उपयोग करके फुल एडर
+<br>
+जैसा कि पहले उल्लेख किया गया है, एक NAND गेट यूनिवर्सल गेट्स में से एक है और इसका उपयोग किसी भी लॉजिक डिजाइन को लागू करने के लिए किया जा सकता है।  केवल NAND गेट्स का उपयोग करके फुल एडर का सर्किट नीचे दिखाया गया है।<br>
+<center><img src="images/19.19.png"><br>
+
+<p><b>फिगर 12. NAND गेट्स का उपयोग करके फुल एडर</b></p></center><br><p></p>
+<h3 id="22full-adder-using-nor-gates">2.2) NOR  गेट्स का उपयोग करके फुल एडर</h3>
+<br>
+जैसा कि पहले उल्लेख किया गया है, एक NOR गेट यूनिवर्सल गेट्स में से एक है, और इसका उपयोग किसी भी लॉजिक डिजाइन को लागू करने के लिए किया जा सकता है।  केवल NOR गेट्स का उपयोग करके फुल एडर का सर्किट नीचे दिखाया गया है।<br>
+<center> <img src="images/20.20.png"><br>
+<b>फिगर 13. NOR गेट्स का उपयोग करके फुल एडर</b></center> <br>
+
+
+
+
+</div>
+</div>
+</div>
+<footer class="text-light pt-2 vlabs-footer d-flex flex-column">
+<div class="row px-5 mx-0">
+<div class="col d-flex flex-column">
+<span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">कम्युनिटी लिंक्स</span>
+<a href="https://www.sakshat.ac.in/" class="text-light">साक्षात पोर्टल</a>
+<a href="http://outreach.vlabs.ac.in/" class="text-light">आउटरीच पोर्टल</a>
+<a href="https://vlab.co.in/faq" class="text-light">FAQ : वर्चुअल लैब्स</a>
+</div>
+<div class="col d-flex flex-column">
+<span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">हमसे संपर्क करें</span>
+<span> फोन : सामान्य जानकारी : 011-26582050 </span>
+<span> ईमेल : support@vlabs.ac.in </span>
+</div>
+<div class="col d-flex flex-column">
+<span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">हमारा अनुसरण करें</span>
+<div class="social-links">
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #55acee;" href="https://twitter.com/TheVirtualLabs">
+<i class="fa fa-twitter"></i>
+</a>
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #3b5998;" href="https://www.facebook.com/Virtual-Labs-IIT-Delhi-301510159983871/">
+<i class="fa fa-facebook"></i>
+</a>
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #e52d27;" href="https://www.youtube.com/watch?v=asxRaOgk6a0">
+<i class="fa fa-youtube"></i>
+</a>
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #2867B2;" href="https://in.linkedin.com/in/virtual-labs-008ba9136">
+<i class="fa fa-linkedin"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="m-0 py-2 text-center" style="font-family: &quot;Open Sans&quot;, sans-serif; background: #212121;">
+<a class="text-primary font-weight-bold" href="https://www.gnu.org/licenses/agpl-3.0.en.html"> AGPL 3.0 </a>
+&nbsp;&amp;&nbsp;
+<a class="text-primary font-weight-bold" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> क्रिएटिव कॉमन्स (CC BY-NC-SA 4.0) </a>
